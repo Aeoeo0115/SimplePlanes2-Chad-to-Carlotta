@@ -22,6 +22,10 @@ This mod replaces the default Chad character with Carlotta from Wuthering Waves,
 
 <img src="sight.gif" width="400">
 
+### Cockpit Controls
+
+<img width="400" height="302" alt="control" src="https://github.com/user-attachments/assets/0ce42992-84e2-48a7-a9e5-bcaa7d4d2fb1" />
+
 ### G-Force Reactions
 
 <img width="400" src="https://github.com/user-attachments/assets/44616d6e-659a-457a-a37b-2a822a931c7e" /> <img src="gforce2.gif" width="400">
