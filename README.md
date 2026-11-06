@@ -22,6 +22,7 @@ This mod replaces the default Chad character with Carlotta from Wuthering Waves,
 
 <img src="sight.gif" width="600">
 
+
 ### G-Force Reactions
 *Demonstration coming soon.*
 
