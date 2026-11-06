@@ -47,7 +47,7 @@ This includes automatic skeleton mapping, body proportion adjustments, IK calibr
 ### On-Foot Animations
   The mod adapts the game's existing character animations to Carlotta's humanoid skeleton, supporting walking, swimming, and falling. Animation retargeting allows the replacement avatar to follow the original movement states, while procedural secondary motion adds natural movement to hair and clothing.
 
-<img src="walk.gif" width="300" /> <img width="300" alt="swim" src="https://github.com/user-attachments/assets/095b5539-3687-466e-98e3-2b7da45ac887" /> <img width="300" alt="dive" src="https://github.com/user-attachments/assets/ecddde16-6ea9-40ad-ab6d-c520a537498d" />
+ <img width="300" alt="walk" src="https://github.com/user-attachments/assets/b7c755d1-2bcd-44fe-9199-1e446ad1175f" /> <img width="300" alt="swim" src="https://github.com/user-attachments/assets/095b5539-3687-466e-98e3-2b7da45ac887" /> <img width="300" alt="dive" src="https://github.com/user-attachments/assets/ecddde16-6ea9-40ad-ab6d-c520a537498d" />
 
 ### Lobby Idle Animations
   The custom avatar remains animated in the main menu instead of appearing as a static model. Idle gestures, including waving, are combined with procedural hair and clothing motion to maintain a natural appearance outside of gameplay.
