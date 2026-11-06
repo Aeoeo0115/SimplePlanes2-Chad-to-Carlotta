@@ -32,7 +32,7 @@ This mod replaces the default Chad character with Carlotta from Wuthering Waves,
 <img src="walk.gif" width="300" /> <img width="300" alt="swim" src="https://github.com/user-attachments/assets/095b5539-3687-466e-98e3-2b7da45ac887" /> <img width="300" alt="dive" src="https://github.com/user-attachments/assets/ecddde16-6ea9-40ad-ab6d-c520a537498d" />
 
 ### Lobby Idle Animations
-<img width="400" height="225" alt="lobby" src="https://github.com/user-attachments/assets/b79fd936-8dc3-4f69-b677-89133b79719e" /> <img src="wave.gif" width="400">
+<img width="400" height="225" alt="lobby" src="https://github.com/user-attachments/assets/b79fd936-8dc3-4f69-b677-89133b79719e" /> <img width="596" height="335" alt="wave" src="https://github.com/user-attachments/assets/fe6c645c-9132-4dea-9f16-9dbb19ba12d0" />
 
 ## Development Status
 
