@@ -19,23 +19,24 @@ This mod replaces the default Chad character with Carlotta from Wuthering Waves,
 ## Gameplay Demonstrations
 
 ### Sight Tracking
-
+The avatar dynamically adjusts its eye and head orientation based on the camera's viewing direction while inside the cockpit. Eye movement is kept subtle, while larger directional changes are handled primarily by head rotation. Tracking is limited to appropriate camera modes to prevent unnatural movement.
 <img src="sight.gif" width="400">
 
 ### Cockpit Controls
-
+The mod adapts Chad's original cockpit control animations to Carlotta's humanoid skeleton, allowing her to interact with the aircraft's controls. Hand and arm positions are adjusted using inverse kinematics (IK) to accommodate differences in body proportions. The system also maintains proper seating alignment across different aircraft and when switching between Build and Flight modes.
 <img width="400" height="302" alt="control" src="https://github.com/user-attachments/assets/0ce42992-84e2-48a7-a9e5-bcaa7d4d2fb1" />
 
 ### G-Force Reactions
-
+The avatar responds to aircraft acceleration, deceleration, and lateral G-forces by dynamically adjusting its body posture. These reactions are layered on top of the existing cockpit animations, making the character lean and shift naturally during maneuvers rather than remaining rigidly seated.
 <img width="400" src="https://github.com/user-attachments/assets/44616d6e-659a-457a-a37b-2a822a931c7e" /> <img src="gforce2.gif" width="400">
 
 
 ### On-Foot Animations
-
+The mod adapts the game's existing character animations to Carlotta's humanoid skeleton, supporting walking, swimming, and falling. Animation retargeting allows the replacement avatar to follow the original movement states, while procedural secondary motion adds natural movement to hair and clothing.
 <img src="walk.gif" width="300" /> <img width="300" alt="swim" src="https://github.com/user-attachments/assets/095b5539-3687-466e-98e3-2b7da45ac887" /> <img width="300" alt="dive" src="https://github.com/user-attachments/assets/ecddde16-6ea9-40ad-ab6d-c520a537498d" />
 
 ### Lobby Idle Animations
+The custom avatar remains animated in the main menu instead of appearing as a static model. Idle gestures, including waving, are combined with procedural hair and clothing motion to maintain a natural appearance outside of gameplay.
 <img width="400" height="225" alt="lobby" src="https://github.com/user-attachments/assets/b79fd936-8dc3-4f69-b677-89133b79719e" /> <img width="400" alt="wave" src="https://github.com/user-attachments/assets/fe6c645c-9132-4dea-9f16-9dbb19ba12d0" />
 
 ## Development Status
