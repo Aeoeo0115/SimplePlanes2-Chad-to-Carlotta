@@ -31,7 +31,8 @@ This includes automatic skeleton mapping, body proportion adjustments, IK calibr
 ### Sight Tracking
   The avatar dynamically adjusts its eye and head orientation based on the camera's viewing direction while inside the cockpit. Eye movement is kept subtle, while larger directional changes are handled primarily by head rotation. Tracking is limited to appropriate camera modes to prevent unnatural movement.
 
-<img src="sight.gif" width="400">
+<img width="400" height="300" alt="sight2" src="https://github.com/user-attachments/assets/ba7407e6-5d76-482e-8b2e-3e9b9ff29248" />
+
 
 ### Cockpit Controls
   The mod adapts Chad's original cockpit control animations to Carlotta's humanoid skeleton, allowing her to interact with the aircraft's controls. Hand and arm positions are adjusted using inverse kinematics (IK) to accommodate differences in body proportions. The system also maintains proper seating alignment across different aircraft and when switching between Build and Flight modes.
