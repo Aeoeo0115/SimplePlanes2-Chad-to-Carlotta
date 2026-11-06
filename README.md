@@ -42,8 +42,7 @@ This includes automatic skeleton mapping, body proportion adjustments, IK calibr
 ### G-Force Reactions
   The avatar responds to aircraft acceleration, deceleration, and lateral G-forces by dynamically adjusting its body posture. These reactions are layered on top of the existing cockpit animations, making the character lean and shift naturally during maneuvers rather than remaining rigidly seated.
 
-<img width="400" src="https://github.com/user-attachments/assets/44616d6e-659a-457a-a37b-2a822a931c7e" /> <img src="gforce2.gif" width="400">
-
+<img width="400" src="https://github.com/user-attachments/assets/44616d6e-659a-457a-a37b-2a822a931c7e" /> <img width="400" alt="gforce2" src="https://github.com/user-attachments/assets/81058743-a0de-4b2c-adcd-1a7cf565ef84" />
 
 ### On-Foot Animations
   The mod adapts the game's existing character animations to Carlotta's humanoid skeleton, supporting walking, swimming, and falling. Animation retargeting allows the replacement avatar to follow the original movement states, while procedural secondary motion adds natural movement to hair and clothing.
