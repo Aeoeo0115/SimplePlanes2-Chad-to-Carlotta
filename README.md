@@ -4,6 +4,16 @@ A custom VRM avatar replacement project for SimplePlanes 2.
 
 This mod replaces the default Chad character with Carlotta from Wuthering Waves, while preserving and adapting the game's existing character animations.
 
+## Project Vision — Universal VRM Avatar Support
+
+The ultimate goal of this project is to evolve from a Carlotta-specific character replacement into a **universal VRM avatar loader for SimplePlanes 2**.
+
+Ideally, users will be able to simply place any compatible `.vrm` file into a designated folder, and the mod will automatically recognize, load, and adapt the avatar to the game's existing animation system.
+
+This includes automatic skeleton mapping, body proportion adjustments, IK calibration, cockpit seating alignment, and support for facial expressions and secondary motion where available.
+
+**Carlotta currently serves as the initial prototype** for developing and testing these systems. The long-term objective is to make custom avatar replacement as close to plug-and-play as possible, without requiring manual rigging or per-character configuration.
+
 ## Features
 
 - Humanoid animation retargeting
