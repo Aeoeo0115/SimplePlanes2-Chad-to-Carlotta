@@ -56,9 +56,9 @@ This includes automatic skeleton mapping, body proportion adjustments, IK calibr
 
 ## Development Status
 
-For version-by-version engineering notes, local performance measurements, regressions, and the roadmap toward a general-purpose VRM loader, see:
-- [Development progress & performance report](DEVELOPMENT_PROGRESS.md)
-Internal development versions (v86.x) are experimental build identifiers and are separate from the public release label (v0.1).
+For detailed development history, performance experiments, and the roadmap toward a universal VRM loader:
+
+- [Development Progress & Engineering Log](docs/DEVELOPMENT_PROGRESS.md)
 
 ## Disclaimer
 
