@@ -56,9 +56,9 @@ This includes automatic skeleton mapping, body proportion adjustments, IK calibr
 
 ## Development Status
 
-**Current development version: v0.1**
-
-Core avatar replacement and animation features are implemented. Performance optimization and compatibility testing are ongoing.
+For version-by-version engineering notes, local performance measurements, regressions, and the roadmap toward a general-purpose VRM loader, see:
+- [Development progress & performance report](docs/DEVELOPMENT_PROGRESS.md)
+Internal development versions (v86.x) are experimental build identifiers and are separate from the public release label (v0.1).
 
 ## Disclaimer
 
