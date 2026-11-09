@@ -1,4 +1,3 @@
-[DEVELOPMENT_PROGRESS_2026-11-10.md](https://github.com/user-attachments/files/34595395/DEVELOPMENT_PROGRESS_2026-11-10.md)
 # Development Progress & Engineering Log
 
 > **SimplePlanes 2 — Chad to Carlotta Avatar Replacement / Experimental Runtime VRM Loader**  
