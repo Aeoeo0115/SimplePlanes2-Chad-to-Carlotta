@@ -1,103 +1,95 @@
-# Development Changelog — SimplePlanes 2 Universal VRM Mod
+# Development Changelog
 
-> Updated: 2026-11-13 (KST)  
-> **Internal experimental version history.** Do not confuse these entries with the public release version (`v0.1`).  
-> Status labels: **Tested** = user game log and/or visual confirmation; **Experimental** = partial/limited validation; **Pending** = source/packaging only, no user game result yet.
+> Last updated: **November 13, 2026 (KST)**. This covers **internal engineering builds**, not public releases.
+>
+> **Tested:** observed in user game logs and/or reported visually. **Experimental:** limited or partial verification. **Pending:** source/package prepared but no Windows build and in-game result provided yet.
 
-## v86.19-AH — Seat Detector GC Fix1 (Pending)
+For implementation background, numeric evidence, and known limitations, see the [Development History](DEVELOPMENT_HISTORY.md). This file intentionally records **changes and status only**; detailed investigations belong in the history.
 
-- Replaced repeated `GetCurrentAnimatorClipInfo()` array allocations with reusable clip-info storage and per-frame seating-state cache.
-- Added `seatCacheHits`, `seatCacheMisses`, and `seatClipListQueries` profiling counters.
-- Changed only `CarlottaSeatDetector.cs` and `RuntimeVrmPerfAf.cs` relative to AG; all other functionality retained.
-- **Windows build and actual GC/frame-time results not yet verified.**
+## v86.19-AH — Seating Detector Allocation Reduction (Pending)
 
-## v86.19-AG — Grip Search Stutter Fix1 (Tested)
+- Replaced repeated Animator clip-info array creation with reusable storage and a per-frame seated-state cache.
+- Added `seatCacheHits`, `seatCacheMisses`, and `seatClipListQueries` counters.
+- Changed the seat detector and performance profiler only; Windows build and performance impact remain **unverified**.
 
-- Reduced unnecessary full-scene searches for missing aircraft `Joystick/GripTarget` controls.
-- Applied 2s → 4s → 8s negative-search backoff, reset on rig rebind; skipped aircraft searches when vehicle wheel was confirmed.
-- Observed: 4 total aircraft control scans; 7,128 suppressed frames; peak scan 22.59ms.
-- Stable-window frame averages about 13.6–15.7ms; rare spikes remain.
+## v86.19-AG — Aircraft Control Search Stutter Fix (Tested)
 
-## v86.19-AF — Performance Pass 1 (Tested profiler)
+- Reduced repeated full-scene control searches, including search work while a steering wheel is already recognized.
+- Added 2 → 4 → 8-second negative-search backoff and rig-change reset.
+- In a local test: **4** total aircraft-control scans and **7,128** suppressed search frames; some frame spikes remain.
 
-- Cached repeated renderer/pose work and added whole-frame/GC plus module CPU timing diagnostics.
-- Profiling on `sop2.vrm`: SpringBone 217 links, ~0.32–0.37ms typical module cost.
-- Detected transient frame spikes up to 597ms and aircraft IK sampling up to 102ms; cause not completely isolated.
+## v86.19-AF — Frame-Time and GC Profiling (Tested)
 
-## v86.19-AE — MToon10 Bundle Bridge (Tested)
+- Added windowed frame-time, GC, managed-heap, and per-module CPU measurements.
+- Reduced redundant renderer and pose-related work.
+- Exposed large isolated frame spikes and search/IK/GC candidates without yet identifying every cause.
 
-- Compiled URP MToon10 in Unity Editor as `sp2_mtoon10_urp` AssetBundle and loaded it at runtime.
-- Supported Inspect/fallback to URP/Lit and MToon10 material mapping for newly imported VRMs.
-- Observed: bundle `status=ready`, shader supported, 10/10 materials mapped, 10/10 textured, 0 unsupported slots.
-- Full VRM0-to-MToon10 parity and outline pass remain unverified.
+## v86.19-AE — MToon10 / Material Compatibility (Tested)
 
-## v86.19-AE — Material Compatibility (Tested)
+- Introduced URP/Lit material diagnostics, a Unity-built Windows MToon10 AssetBundle, runtime loading, and fallback.
+- Observed **10/10** mapped MToon10 materials on the tested VRM; exact VRM0 shading and outline fidelity remain open.
 
-- Compared URP/Unlit vs URP/Lit; audited shader, base/normal/emission textures, transparency and render queue.
-- Preserved existing Carlotta materials and other avatar systems.
+## v86.19-AE — Vehicle-Local Seated Drape (Tested)
 
-## v86.19-AE — Vehicle Local Drape (Tested)
+- Stabilized clothing in the seat's coordinate frame while seated; restored ordinary secondary motion when on foot.
+- Removed inappropriate world-gravity/inertial behavior during high-speed vehicle movement.
+- Did not add a body, cockpit, or cloth mesh-collision solver.
 
-- Seated: replaced world-inertial secondary motion with seat-local kinematic clothing drape, following vehicle floor direction during roll/pitch.
-- On-foot: restored normal SpringBone motion.
-- Observed `seatedKinematicFrames=3004`, `seatFrame=Seat`, `gravityWorldAppliedWhileSeated=False`.
-- Real mesh/seat collision is not simulated.
+## v86.19-AD — Expanded SpringBone Handling (Tested; Seated Regression Addressed in AE)
 
-## v86.19-AD — All Movable Spring (Tested, with seated regression)
+- Extended metadata-driven spring handling to registered chains and selected extra weighted chains.
+- On-foot motion was reported to work; vehicle-speed flapping led to the AE seated-drape policy.
 
-- Generalized SpringBone mapping for registered VRM0/VRM1 chains, plus optional weighted clothing chains.
-- Tested example: 103 registered + 4 auxiliary links; metadata colliders 0.
-- On-foot motion worked; seated speed-dependent flapping prompted AE local drape fix.
+## v86.19-AC — Live Scale and Seat/IK Refit (Tested)
 
-## v86.19-AC — Live Scale & Seat/Grip Refit (Tested)
+- Added 0.1× live avatar scaling and recalculation of seat, foot, arm reach, and hand targets.
+- Reduced steering-wheel proxy hand-target errors to below **1 cm** at tested scale factors; physical palm/finger contact was not verified.
 
-- Hotkeys for 0.1× VRM size adjustments, reset/save; recalculated seat/foot references and arm reach/IK.
-- Vehicle IK after-error at factor 1.2×: right 0.37cm, left 0.88cm; at 1.4×: ~0.46/~0.44cm.
-- Figures are proxy hand target errors, not verified physical grip.
+## v86.19-AB — Vehicle Steering-Wheel IK and Body-Reaction Policy (Tested)
 
-## v86.19-AB — Vehicle Wheel Grip (Tested)
-
-- Added `Steering_Wheel` identification and separate vehicle two-hand IK, while keeping aircraft joystick/throttle logic unchanged.
-- Original hand target error ~13–14cm, reduced to ~7cm; remaining arm reach limitation motivated AC.
-
-## v86.19-AB — Universal Body Reaction (Tested inheritance policy)
-
-- Reused inherited Carlotta breathing/visual acceleration response without double-rotating the imported VRM.
-- Observed `policy=inherited_no_double_write`, zero added writes/exceptions for `Source=Carlotta`.
+- Added separate vehicle two-hand IK using detected wheel geometry/reference palms.
+- Prevented duplicate breathing/G-force rotations when inheriting the Carlotta animation source.
 
 ## v86.19-AA — Universal Cockpit Gaze (Tested)
 
-- Added UniVRM LookAt integration, Chase-and-seated-only activation, Orbit disable, Carlotta-inherited-head duplicate prevention.
-- Observed 1,726 eye frames and zero eye driver errors in user test.
+- Integrated UniVRM LookAt for the imported avatar, active in seated Chase view but not Orbit view.
+- Prevented duplicate head rotation with inherited Carlotta poses.
 
-## v86.19-Z Fix2 — Expressions & Idle Source (Tested)
+## v86.19-Z Fix2 — Runtime Expressions and Idle Retargeting (Tested)
 
-- Replaced character-specific BlendShape mapping with UniVRM Runtime ExpressionKeys.
-- Restored F6/automatic blink and Carlotta pose/VRMA idle source for imported VRM.
-- Observed 8 mapped expressions out of 18 available clips.
+- Mapped VRM ExpressionKeys rather than hard-coded character-specific blendshape indices.
+- Restored F6 expression cycling, blinking, and imported-avatar idle source selection.
 
-## v86.19-U~Y — Adaptive Aircraft Cockpit IK (Iterative)
+## v86.19-U–Y — Cockpit Grip and Reach-First IK (Iterative Testing)
 
-- U: device-local hand grip calibration.
-- V: minimum-cost neutral dual-hand torso lean.
-- W: forward-only distributed Spine/Chest lean and smooth return.
-- X: reach-first, arm IK before torso correction.
-- Y: seat fit and reduced neutral overlean.
+- Added pilot-control-relative hand calibration, constrained two-hand torso assistance, forward-only lean, reach-first correction, and seat-neutral tuning.
 
-## v86.19-A~T — Runtime VRM Bring-up / Scene / Physics / Glass (Iterative)
+## v86.19-L–T — Control Geometry and Rendering Investigations (Iterative Testing)
 
-- Runtime UniVRM `.vrm` loading, MainMenu prewarm, Humanoid pose transfer, Terrain/Designer overlay, scene binding and rebind safety.
-- Two-bone hand diagnostics, VRM SpringBone metadata/skin weights, joystick/throttle survey and glass `sortingOrder` safety fix.
-- Experimental overlay duration expanded from 20s to 120s; permanent replacement remains planned.
+- Investigated joystick/throttle renderers and colliders, contact-gated grips, and glass sorting/depth issues.
+- Added conditional glass `sortingOrder` handling with restoration on scene change.
 
-## v86.3~v86.17 — Carlotta Foundation (Iterative)
+## v86.19-A–K — Runtime VRM Import Bring-Up (Experimental, Locally Tested)
 
-- Fixed Designer/Build/Fly seat alignment, aircraft-aware transfer, face/eye skinning and near clipping, `.NET Standard 2.1` Unity6 build compatibility, release/rollback scripts and profile audit.
+- Implemented UniVRM import, shader fallback, Humanoid pose transfer, temporary menu/Build/Fly overlays, scene and rig rebinding, and spring metadata diagnostics.
+- Introduced scale locking, read-only motion inspection, and optional spring motion on imported VRM bones.
+- Original ~20-second preview was later extended to an approximately **120-second experimental overlay**.
 
-## Earlier v0.x~v82.4 — Initial Prototype and Animation/Physics Work
+## v86.15–v86.17 — Avatar Profile Validation
 
-- Chad/Carlotta replacement with Humanoid pose retargeting and non-destructive original-rig hiding.
-- RenderDoc eye/face material investigations, Chase-only cockpit gaze, reactions and on-foot/lobby animations.
-- VRMA-to-spmotion conversion, T-pose-corrected tracks, foot contact and hair/cloth dynamics tuning.
+- Added Humanoid, face/eye, and named secondary-motion profile diagnostics, preserving previous render and seat adjustments.
 
-See [the full development history](DEVELOPMENT_HISTORY.md) for implementation rationale, user-observed measurements, outstanding limitations, and future tasks.
+## v86.12–v86.14 — Attachment / Asset Preload Performance
+
+- Added asset retention, parsed motion caching, and experimental asynchronous bundle/prefab preloading.
+- Reduced repeated **synchronous attach CPU time**, with separate frame-time validation still needed.
+
+## v86.3–v86.11 — Scene and Seat Stabilization
+
+- Addressed Main Menu/Designer/Terrain rig binding, face near-clipping, aircraft-aware Build ↔ Fly seat alignment, and assembly compatibility.
+- Improved build, backup, deployment, and rollback tooling.
+
+## Earlier v0.x–v82.4 — Prototype, Animation, and Physics
+
+- Developed Chad/Carlotta visual replacement, native Humanoid animation retargeting, eye/face rendering, expressions, gaze, vehicle reactions, and on-foot/lobby motions.
+- Converted VRMA tracks to internal motion data, corrected rest/T-pose offsets, and iteratively tuned secondary motion.
