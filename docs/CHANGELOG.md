@@ -100,4 +100,4 @@
 - RenderDoc eye/face material investigations, Chase-only cockpit gaze, reactions and on-foot/lobby animations.
 - VRMA-to-spmotion conversion, T-pose-corrected tracks, foot contact and hair/cloth dynamics tuning.
 
-See [the full development history](docs/DEVELOPMENT_HISTORY.md) for implementation rationale, user-observed measurements, outstanding limitations, and future tasks.
+See [the full development history](DEVELOPMENT_HISTORY.md) for implementation rationale, user-observed measurements, outstanding limitations, and future tasks.

@@ -2,7 +2,7 @@
 
 A custom VRM avatar replacement project for SimplePlanes 2.
 
-This mod replaces the default Chad character with Carlotta from Wuthering Waves, while preserving and adapting the game's existing character animations.
+The project began as a Carlotta replacement for the default Chad character and now also supports experimental runtime loading of compatible VRM humanoid avatars, while reusing the game's character animations.
 
 ## Project Vision — Universal VRM Avatar Support
 
@@ -12,7 +12,7 @@ Ideally, users will be able to simply place any compatible `.vrm` file into a de
 
 This includes automatic skeleton mapping, body proportion adjustments, IK calibration, cockpit seating alignment, and support for facial expressions and secondary motion where available.
 
-**Carlotta currently serves as the initial prototype** for developing and testing these systems. The long-term objective is to make custom avatar replacement as close to plug-and-play as possible, without requiring manual rigging or per-character configuration.
+**Carlotta remains the reference prototype** for developing and testing these systems alongside the experimental runtime VRM path. The long-term objective is to make custom avatar replacement as close to plug-and-play as possible, without requiring manual rigging or per-character configuration.
 
 ## Features
 
@@ -54,11 +54,25 @@ This includes automatic skeleton mapping, body proportion adjustments, IK calibr
 
 <img width="400" height="225" alt="lobby" src="https://github.com/user-attachments/assets/b79fd936-8dc3-4f69-b677-89133b79719e" /> <img width="400" alt="wave" src="https://github.com/user-attachments/assets/fe6c645c-9132-4dea-9f16-9dbb19ba12d0" />
 
-## Development Status
+## Development Progress — Universal VRM Support (November 2026)
 
-For detailed development history, performance experiments, and the roadmap toward a universal VRM loader:
+The project has progressed from a Carlotta-specific avatar replacement prototype to an experimental **runtime Universal VRM avatar system**. Compatible VRM files can be imported at runtime and driven by SimplePlanes 2's existing animation system, with additional body-size adjustment, cockpit/vehicle IK, facial expressions, camera-aware gaze, secondary motion, and MToon10 material support.
 
-- [Development Progress & Engineering Log](docs/DEVELOPMENT_PROGRESS.md)
+### Highlights
+
+- **Runtime VRM import and retargeting:** Support for compatible Humanoid VRMs using UniVRM, while preserving the original Chad/Carlotta rig.
+- **Aircraft and vehicle interaction:** Aircraft joystick/throttle hand targets, two-hand steering-wheel IK, reach-first torso posture, and seat alignment.
+- **Live avatar scaling:** 0.1× increments with recalculated arm reach, seating and foot alignment proxies.
+- **Expressions and gaze:** UniVRM expressions, blinking, and Chase-only cockpit eye tracking.
+- **Secondary motion:** VRM SpringBone chains for on-foot motion and vehicle-local, non-inertial cloth drape while seated.
+- **MToon10 materials:** Unity-built URP shader AssetBundle loaded at runtime; one test avatar successfully mapped 10/10 materials to MToon10.
+- **Profiling and optimization:** Frame-time/GC/module profiling, reduced redundant aircraft-control searches, and further seat-detection allocation improvements under test.
+
+**Development status:** The latest internal source package is `v86.19-AH` (GC optimization; in-game validation pending). The latest performance patch confirmed in user logs is `v86.19-AG`. This is an experimental development build, not a stable public release. The runtime overlay still has an experimental duration limit, and complete compatibility with all VRM models, full MToon appearance parity, mesh-based cloth collisions, and finger grip are not yet guaranteed.
+
+For technical details and validation notes, see [Development History](docs/DEVELOPMENT_HISTORY.md) and [Changelog](docs/CHANGELOG.md).
+
+> **Asset notice:** Third-party character models, textures, animations, game DLLs, and proprietary bundles are not included for redistribution without appropriate permissions.
 
 ## Disclaimer
 

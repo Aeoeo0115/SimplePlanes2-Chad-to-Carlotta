@@ -1,5 +1,7 @@
 # Development Progress & Engineering Log
 
+> **Historical snapshot:** The v86.19-K details below describe the state on 2026-11-10. For v86.19-AH and newer milestones, see [Development History](DEVELOPMENT_HISTORY.md) and [Changelog](CHANGELOG.md).
+
 > **SimplePlanes 2 — Chad to Carlotta Avatar Replacement / Experimental Runtime VRM Loader**  
 > Last updated: **2026-11-10** · Latest locally tested experimental build: **v86.19-K (SpringMotion Syntax Fix1)** · Public README version: **v0.1**
 >
